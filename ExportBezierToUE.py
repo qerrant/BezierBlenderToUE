@@ -14,8 +14,8 @@ from bpy_extras.io_utils import ImportHelper
 
 class ObjectExportPoints(bpy.types.Operator, ImportHelper):
     bl_idname = "me.export_bezier_points" 
-    bl_label = "Export BezierCSV"   
-    bl_options = {'REGISTER', 'UNDO'} 
+    bl_label = "Export BezierCSV to UE4"   
+    bl_options = {'REGISTER'} 
     
     def execute(self, context):
         obj = bpy.context.active_object
@@ -36,7 +36,10 @@ class ObjectExportPoints(bpy.types.Operator, ImportHelper):
             
                 for bezier in beziers:
                     for point in bezier.bezier_points:
-                        line = str % (count, point.co.x, -point.co.y, point.co.z, point.handle_left.x, -point.handle_left.y, point.handle_left.z, point.handle_right.x, -point.handle_right.y, point.handle_right.z)
+                        line = str % (count, \
+                            point.co.x, -point.co.y, point.co.z, \
+                            point.handle_left.x, -point.handle_left.y, point.handle_left.z, \
+                            point.handle_right.x, -point.handle_right.y, point.handle_right.z)
                         saveFile.write(line);
                         count = count + 1
             
@@ -60,6 +63,7 @@ def register():
 
 def unregister():
     bpy.utils.unregister_class(ObjectExportPoints)
+    bpy.types.TOPBAR_MT_file_export.remove(menu_func)
 
 if __name__ == "__main__":
     register()
