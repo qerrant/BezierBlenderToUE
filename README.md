@@ -1,5 +1,7 @@
 # BezierBlenderToUE
-Export Bezier curve from Blender to Unreal Engine 4
+Export Bezier curve from Blender to Unreal Engine 4.
+
+The article is available [here](https://medium.com/@qerrant/export-spline-from-blender-to-unreal-engine-28a4ccdd97c0). 
 
 ## List
 * **ExportBezierToUE.py** - Blender add-on
