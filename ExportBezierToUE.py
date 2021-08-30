@@ -32,7 +32,7 @@ class ObjectExportPoints(bpy.types.Operator, ImportHelper):
                 count = 1
                 saveFile = open(self.filepath + ".csv", "w")
                 saveFile.write("name,px,py,pz,hlx,hly,hlz,hrx,hry,hrz\n");
-                str = '%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n'
+                str = '%d,%f,%f,%f,%f,%f,%f,%f,%f,%f\n'
             
                 for bezier in beziers:
                     for point in bezier.bezier_points:
